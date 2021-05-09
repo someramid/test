@@ -51,44 +51,6 @@ function bubbleSortBetter(arr) {
 
 
 
-// 1. 
-
-// i=0 to 4
-// i=0. cur = 2
-//   j=i+1 to 4
-//     j=1 ... a[1] > 2
-//       a[j-1] = a[j]
-//     j=2 ... a[2] > 2
-//       a[j-1] = cur
-  
-// i=4
-//   j=1 to 4
-  
-// [2, 1, 5, 4, 3]
-// i = 4
-
-// function insertionSortFromRight(arr) {
-//   let i, j, curElem;
-//   const n = arr.length;
-  
-//   //In ith iteration, find right place for ith element by finding 
-//   //element bigger than arr[i] and placing it before it.
-//   // At end of ith iteration, elements arr[n-1] to arr[n-1-i] are sorted
-//   for (i=1; i<n; i++) {
-//     curElem = arr[n-i+];
-//     j=n-i-1;
-//     while (j>=0 && arr[j]>curElem) {
-//       arr[j+1] = arr[j];
-//       j--;
-//     }
-//     arr[j-1] = curElem;
-//   }
-//   console.log("Insertion sort=" + arr);  
-// }
-
-// [2, 1, 5, 4, 3]
-
-
 function insertionSortFromLeftNotWorking(arr) {
   let i, j, curElem;
   const n = arr.length;
@@ -120,7 +82,7 @@ function insertionSortFromLeftNotWorking(arr) {
     
 // i=1
 
-function insertionSortFromLeft(arr) {
+function insertionSort(arr) { //https://media.geeksforgeeks.org/wp-content/uploads/insertionsort.png
   let i, j, curElem;
   const n = arr.length;
   
@@ -132,7 +94,7 @@ function insertionSortFromLeft(arr) {
     console.log("i=" + i + ", curElem=" + curElem);
     for (j=i-1; j>=0; j--) {
       if (arr[j] > curElem) {
-        arr[j+1] = arr[j];
+        arr[j+1] = arr[j]; //Keep moving elements to right to make space for curElem
       } else {
         // Below doesn't work inside for loop because it has to be done at end of 
         //  for loop where above if condition is correct or not
@@ -148,6 +110,27 @@ function insertionSortFromLeft(arr) {
 }
 
 
+function insertionSortWhile(arr) {
+  let i, j, curElem;
+  const n = arr.length;
+  
+  //In ith iteration, find right place for ith element by finding 
+  //element bigger than arr[i] and placing it before it.
+  // At end of ith iteration, elements arr[n-1] to arr[n-1-i] are sorted
+  for (i=1; i<n; i++) {
+    curElem = arr[i];
+    j = i-1;
+   
+    while(j>=0 && arr[j] > curElem) {
+      arr[j+1] = arr[j];
+      j--;
+    }
+    console.log("j=" + j);
+    arr[j+1] = curElem;
+    console.log("arr=" + arr);
+  }
+  console.log("Insertion sort=" + arr);  
+}
 
 
 
@@ -155,7 +138,8 @@ let arr = [2, 1, 5, 4, 3, 0, 4, 9, 7];
 // selSort(arr);
 // bubbleSort(arr);
 // bubbleSortBetter(arr);
-insertionSortFromLeft(arr);
+// insertionSort(arr);
+insertionSortWhile(arr);
 
 console.log("*******************");  
 
@@ -163,7 +147,8 @@ arr = [2, 1, 5, 4, 3];
 // selSort(arr);
 // bubbleSort(arr);
 // bubbleSortBetter(arr);
-insertionSortFromLeft(arr);
+// insertionSort(arr);
+insertionSortWhile(arr);
 
 console.log("*******************");  
 
@@ -171,7 +156,8 @@ arr = [6, 1, 5, 4, 3];
 // selSort(arr);
 // bubbleSort(arr);
 // bubbleSortBetter(arr);
-insertionSortFromLeft(arr);
+// insertionSort(arr);
+insertionSortWhile(arr);
 
 
 
