@@ -29,7 +29,7 @@ function buildMaxHeap(input) {
   console.log("Build heap", a);
 }
 
-buildMaxHeap(a);
+// buildMaxHeap(a);
 
 // [undefined, 9, 8, 7, 6, 7, 2, 6, 5, 4] ... len = 10, nodes = 9
 function insert(a, num){
@@ -48,7 +48,7 @@ function insert(a, num){
     [a[parentIdx], a[i]] = [a[i], a[parentIdx]];
     i = parentIdx;
   }
-  console.log(a);
+  console.log("insert ", a);
 }
 
 a = [undefined, 9, 8, 7, 6, 7, 2, 6, 5, 4];
@@ -87,6 +87,8 @@ function replaceRootWithNumber(a, num) {
     }
     i = 2*i;
   }
+  console.log("replaceRootWithNumber ", a);
+  
 }
 
 // a = [undefined, 9, 8, 7, 6, 7, 2, 6, 5, 4];
